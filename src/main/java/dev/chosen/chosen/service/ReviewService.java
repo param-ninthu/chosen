@@ -29,7 +29,7 @@ public class ReviewService {
         //// This mongo template is used to update the movie class where the imdbId is equals and update the reviewId with review
         mongoTemplate.update(Movie.class)
                 .matching(Criteria.where("imdbId").is(imdbId))
-                .apply(new Update().push("reviewsIds").value(review))
+                .apply(new Update().push("reviews").value(review))
                 .first();
 
         return review;
